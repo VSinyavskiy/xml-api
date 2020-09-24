@@ -1,0 +1,11 @@
+framework:
+    cache:
+        app: cache.adapter.memcached
+        system: cache.adapter.memcached
+    php_errors:
+        log: true
+    secret: '%env(APP_SECRET)%'
+    session:
+        handler_id: ~
+    validation: { enable_annotations: true }
+

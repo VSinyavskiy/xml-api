@@ -1,0 +1,8 @@
+jms_serializer:
+    visitors:
+        xml_serialization:
+            format_output: false
+            version: "1.0"
+            encoding: "UTF-8"
+            default_root_name: "result"
+            default_root_ns: null

@@ -1,0 +1,52 @@
+parameters:
+    env(DATABASE_MASTER_HOST): '127.0.0.1'
+    env(DATABASE_MASTER_PORT): 5432
+    env(DATABASE_MASTER_USER): 'postgres'
+    env(DATABASE_MASTER_PASSWORD): ''
+    database: '%env(string:DATABASE_DATABASE)%'
+    database_master_host: '%env(string:DATABASE_MASTER_HOST)%'
+    database_master_port: '%env(int:DATABASE_MASTER_PORT)%'
+    database_master_user: '%env(string:DATABASE_MASTER_USER)%'
+    database_master_password: '%env(string:DATABASE_MASTER_PASSWORD)%'
+    env(DATABASE_SLAVE_HOST): '127.0.0.1'
+    env(DATABASE_SLAVE_PORT): 5432
+    env(DATABASE_SLAVE_USER): 'postgres'
+    env(DATABASE_SLAVE_PASSWORD): ''
+    database_slave_host: '%env(string:DATABASE_SLAVE_HOST)%'
+    database_slave_port: '%env(int:DATABASE_SLAVE_PORT)%'
+    database_slave_user: '%env(string:DATABASE_SLAVE_USER)%'
+    database_slave_password: '%env(string:DATABASE_SLAVE_PASSWORD)%'
+doctrine:
+    dbal:
+        charset: utf8
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+        dbname: '%database%'
+        driver: 'pdo_pgsql'
+        host: '%database_master_host%'
+        port: '%database_master_port%'
+        server_version: '11.0.7'
+        user: '%database_master_user%'
+        password: '%database_master_password%'
+        options:
+            2: 60
+        slaves:
+            slave:
+                dbname: '%database%'
+                host: '%database_slave_host%'
+                port: '%database_slave_port%'
+                user: '%database_slave_user%'
+                password: '%database_slave_password%'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App

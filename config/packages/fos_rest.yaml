@@ -1,0 +1,15 @@
+fos_rest:
+  body_listener: true
+  format_listener:
+    rules:
+      - { path: '^/api/', priorities: ['xml'], fallback_format: xml, prefer_extension: false }
+      - { path: '^/', stop: true }
+  param_fetcher_listener: true
+  routing_loader: false
+  serializer:
+    serialize_null: true
+  view:
+    view_response_listener: 'force'
+    formats:
+      html: true
+      xml: true
