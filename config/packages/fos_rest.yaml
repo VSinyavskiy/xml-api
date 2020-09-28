@@ -1,5 +1,8 @@
 fos_rest:
-  body_listener: true
+  body_listener:
+    decoders:
+      xml: fos_rest.decoder.xml
+    array_normalizer: xml.normalizer
   format_listener:
     rules:
       - { path: '^/api/', priorities: ['xml'], fallback_format: xml, prefer_extension: false }

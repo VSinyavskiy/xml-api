@@ -5,7 +5,9 @@
         "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-json": "*",
         "ext-xml": "*",
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "friendsofsymfony/rest-bundle": "^3.0",
         "jms/serializer-bundle": "^3.7",
         "symfony/asset": "5.1.*",
@@ -14,6 +16,7 @@
         "symfony/event-dispatcher": "5.1.*",
         "symfony/flex": "^1.3.1",
         "symfony/framework-bundle": "5.1.*",
+        "symfony/serializer": "5.1.*",
         "symfony/validator": "5.1.*",
         "symfony/yaml": "5.1.*"
     },

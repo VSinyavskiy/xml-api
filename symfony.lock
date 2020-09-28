@@ -278,6 +278,9 @@
     "symfony/security-core": {
         "version": "v5.1.5"
     },
+    "symfony/serializer": {
+        "version": "v5.1.6"
+    },
     "symfony/service-contracts": {
         "version": "v2.2.0"
     },

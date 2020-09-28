@@ -16,5 +16,21 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
 
-    jms_serializer.naming_strategy:
-        alias: jms_serializer.identical_property_naming_strategy
+    App\EventListener\UserListener:
+        tags:
+            - { name: doctrine.orm.entity_listener, event: prePersist, priority: 255 }
+
+    App\EventListener\TransactionListener:
+        tags:
+            - { name: doctrine.orm.entity_listener, event: prePersist, priority: 255 }
+
+    converter.payload:
+        class: App\ParamConverter\PayloadConverter
+        tags:
+            - { name: request.param_converter, priority: -50, converter: payload }
+
+    xml.normalizer:
+        class: App\ArrayNormalizer\XmlNormalizer
+
+    App\Service\Payload\Factory\DataHelper:
+        public: false
