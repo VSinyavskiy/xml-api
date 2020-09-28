@@ -1,4 +1,4 @@
-В проекте использованы Symfony framework, PostgreSQL.
+В проекте использованы **Symfony framework, PostgreSQL.**
 
 Для запуска проекта необходимо выполнить следующие действия:
 1. Создаем .env на основе .env.example и заполняем его доступами к postgres
